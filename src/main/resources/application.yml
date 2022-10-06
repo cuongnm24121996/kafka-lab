@@ -4,12 +4,18 @@ server:
 spring:
   kafka:
     consumer:
-      bootstrap-servers: localhost:29092
-      group-id: group_id
+      bootstrap-servers: ${application.kafka.bootstrap-servers}
+      group-id: ${application.kafka.group-id}
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     producer:
-      bootstrap-servers: localhost:29092
+      bootstrap-servers: ${application.kafka.bootstrap-servers}
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+application:
+  kafka:
+    bootstrap-servers: localhost:29092
+    group-id: group_id
+    topic: topic-lab
