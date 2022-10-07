@@ -19,6 +19,6 @@ public class NotifyController {
     @ResponseStatus(HttpStatus.CREATED)
     public void save(@RequestBody MessageDTO dto) {
         log.info("Saving new message = {} into the topic", dto.toString());
-        producer.sendMessage(dto);
+        producer.sendMessage(dto.getMessage(), dto);
     }
 }
